@@ -109,6 +109,12 @@ DeviceFileEvents
 
 ```
 
+![image](https://github.com/user-attachments/assets/8acd3e26-74cb-440f-9f35-159c42b7106c)
+
+
+![image](https://github.com/user-attachments/assets/c2d07dca-d0ee-40d8-9ff9-ccf0471b6c08)
+
+
 ### PowerShell + Firefox Execution Detection
 ```kql
 DeviceProcessEvents
@@ -118,6 +124,9 @@ DeviceProcessEvents
 | where ProcessCommandLine has "firefox.exe"
 | order by Timestamp desc
 ```
+
+![image](https://github.com/user-attachments/assets/449a5773-1149-47a8-a6e0-f4455519fcd7)
+
 
 ---
 ## ✅ Summary
