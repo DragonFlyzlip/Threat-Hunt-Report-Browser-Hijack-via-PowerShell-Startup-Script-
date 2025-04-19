@@ -89,12 +89,9 @@ DeviceProcessEvents
 ---
 
 ## Created By
-- **Author Name:** ChatGPT  
+- **Author Name:** Ashraf 
 - **Date:** April 12, 2025  
 
-## Validated By
-- **Reviewer Name:**  
-- **Validation Date:**  
 
 ---
 
