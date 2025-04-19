@@ -141,12 +141,43 @@ DeviceProcessEvents
 - Evaded AV due to trusted user context and benign file origins.
 ---
 
-## Response Actions
 
-- **TOR usage** was confirmed on endpoint `_______________`
-- Device was **isolated from the network**
-- User’s **direct manager was notified**
-- Further analysis is ongoing to determine lateral movement and potential data access
+##  Response Taken
+
+Upon detection of the anomalous browser behavior reported during the internal cybersecurity conference, the security team initiated an immediate threat hunt across affected and potentially exposed endpoints. Below are the detailed actions taken:
+
+---
+
+### 1. Endpoint Isolation
+- **Device Identified:** `ash-threathunt`
+- After correlating event logs and confirming suspicious file activity (e.g., creation of `open-creepy.ps1`, `creepy.html`, and `launcher.bat`), the endpoint was isolated from the network using our EDR platform to prevent lateral movement or further payload execution.
+- **Isolation timestamp:** April 15, 2025, at 02:10 AM
+
+---
+
+### 2. File Hash Analysis
+- The following SHA256 file hashes were extracted and submitted to VirusTotal and internal sandbox analysis:
+  - `creepy.html` - `78fc8676c9026c18f98edcb81e6e31a5cc8578e4714f943ddc70d4aa0d78ed6`
+  - `open-creepy.ps1` - `1241e16c8e0f018a997cfa8653221bc774108cf6a78c46cd5c8091e513ce9e71`
+- None of the hashes had existing detections on public feeds, indicating a novel or low-prevalence threat.
+- Behavioral sandboxing confirmed the HTML page opened a fullscreen white screen with embedded audio playback and no external beaconing attempts.
+
+---
+
+### 3. Malicious Startup Entry Cleanup
+- Located the malicious script within:
+  - `C:\Users\Ash\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\open-creepy.ps1`
+- Deleted all associated files: `open-creepy.ps1`, `creepy.html`, `launcher.bat`, and `spooky.mp3`
+- Scheduled task manager and autorun utilities were scanned to ensure no additional persistence mechanisms existed.
+
+---
+
+### 4. ZIP File Distribution Traceback
+- The shared `Conference_Toolkit.zip` was identified as the source of the infection.
+- This file was shared via:
+  - Internal Slack workspace
+  - SharePoint site titled `\InternalEvents\CyberCon2025\Resources`
+- Downloads of this ZIP were traced using cloud app security logs. 17 users downloaded the file.
 
 ---
 
