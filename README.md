@@ -1,11 +1,13 @@
 # Threat Hunt Report: Browser Hijack via PowerShell Startup Script
 
-## Incident Summary
+- [Scenario Creation](https://github.com/DragonFlyzlip/Threat-Hunt-Report-Browser-Hijack-via-PowerShell-Startup-Script-/blob/main/Threathunting-conference-incident-Creation.md)
 
-**Title:** Detection of Malicious PowerShell Script Execution on Workstations During Cybersecurity Conference  
-**Date of Detection:** April 15, 2025  
-**Affected Device:** `ash-threathunt`  
-**User:** `ash`  
+## Platforms and Languages Leveraged
+- Windows 10 Virtual Machines (Microsoft Azure)
+- EDR Platform: Microsoft Defender for Endpoint
+- Kusto Query Language (KQL)
+- Tor Browser
+
 
 ### Scenario
 
@@ -180,11 +182,3 @@ Upon detection of the anomalous browser behavior reported during the internal cy
 - Downloads of this ZIP were traced using cloud app security logs. 17 users downloaded the file.
 
 ---
-
-## Recommendations
-
-- Block `.ps1` scripts from unverified sources in Startup folders
-- Improve content scanning for internal platforms like Slack and SharePoint
-- Enhance user awareness on ZIP/script execution risks
-- Integrate script behavioral analysis into endpoint protection tools
-- Monitor for use of `-ExecutionPolicy Bypass` in PowerShell logs
