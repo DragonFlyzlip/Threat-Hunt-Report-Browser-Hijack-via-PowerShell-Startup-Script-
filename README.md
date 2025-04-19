@@ -48,52 +48,58 @@ Some instances played background music.
 
 ---
 
-## Timeline of Events
+##  Steps Taken
 
-### 1. Creation of `creepy.html`
-- **Date/Time:** April 15, 2025, 12:52 AM  
-- **Location:** `C:\Users\Ash\Documents\LabPayload`  
-- **Process:** `notepad.exe`  
-- **SHA256 Hash:** `78fc8676c9026c18f98edcb81e6e31a5cc8578e4714f943ddc70d4aa0d78ed6`
+###  Step 1: Detect File Creation — `creepy.html`
+- **Date/Time:** April 15, 2025, 12:52 AM
+- **Device:** `ash-threathunt`
+- **File Path:** `C:\Users\Ash\Documents\LabPayload\creepy.html`
+- **Created By:** `notepad.exe`
+- **SHA256:** `78fc8676c9026c18f98edcb81e6e31a5cc8578e4714f943ddc70d4aa0d78ed6`
+
+###  Step 2: Detect PowerShell Script Creation — `open-creepy.ps1`
+- **Date/Time:** April 15, 2025, 1:12 AM
+- **File Path:** `C:\Users\Ash\Documents\open-creepy.ps1`
+- **Created By:** `powershell.exe`
+- **Size:** `118 bytes`
+- **SHA256:** `1241e16c8e0f018a997cfa8653221bc774108cf6a78c46cd5c8091e513ce9e71`
+
+###  Step 3: Batch File Creation — `launcher.bat`
+- **Date/Time:** April 15, 2025, 1:19 AM
+- **File Path:** `C:\Users\Ash\Documents\LabPayload\launcher.bat`
+- **Created By:** `notepad.exe`
+
+###  Step 4: PowerShell Auto-Run Configuration
+- **Date/Time:** April 15, 2025, 1:28 AM
+- **Execution Command:**
+```powershell
+powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\Ash\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\open-creepy.ps1"
+```
+- **Purpose:** Ensures script runs at every login, bypasses PowerShell security policy
+
+###  Step 5: Malicious HTML Execution via Firefox
+- **Date/Time:** April 15, 2025, 1:28 AM
+- **Command Executed:**
+```cmd
+firefox.exe C:\Users\Ash\Documents\LabPayload\creepy.html
+```
+- **Triggered By:** `open-creepy.ps1`
+- **Likely Initiated From:** `launcher.bat` in Startup folder
+
+---
+
+## 📅 Chronological Timeline of Events
+
+| Time          | Event Type        | File Name             | Path                                             | Notes |
+|---------------|-------------------|------------------------|--------------------------------------------------|-------|
+| 12:52 AM      | File Created       | `creepy.html`         | `C:\Users\Ash\Documents\LabPayload`             | Created via `notepad.exe` |
+| 1:12 AM       | PowerShell Script  | `open-creepy.ps1`     | `C:\Users\Ash\Documents`                        | Created via `powershell.exe` |
+| 1:19 AM       | Batch Script       | `launcher.bat`        | `C:\Users\Ash\Documents\LabPayload`             | Launch helper |
+| 1:28 AM       | Script Executed    | `open-creepy.ps1`     | Startup folder                                   | Auto-execution setup |
+| 1:28 AM       | Browser Executed   | `firefox.exe creepy.html` | `C:\Users\Ash\Documents\LabPayload`      | Final payload display |
 
 ---
 
-### 2. Creation of `open-creepy.ps1`
-- **Date/Time:** April 15, 2025, 1:12 AM  
-- **Location:** `C:\Users\Ash\Documents`  
-- **Process:** `powershell.exe`  
-- **Size:** 118 bytes  
-- **SHA256 Hash:** `1241e16c8e0f018a997cfa8653221bc774108cf6a78c46cd5c8091e513ce9e71`
-
----
-
-### 3. Creation of `launcher.bat`
-- **Date/Time:** April 15, 2025, 1:19 AM  
-- **Location:** `C:\Users\Ash\Documents\LabPayload`  
-- **Process:** `notepad.exe`  
-- **Purpose:** Batch file to launch the PowerShell script at login
-
----
-
-### 4. PowerShell Script Auto-Run at Startup
-- **Date/Time:** April 15, 2025, 1:28 AM  
-- **Command:**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\Ash\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\open-creepy.ps1"
-  ```
-- **Details:** Script was configured to auto-execute on user login in hidden mode.
-
----
-
-### 5. Firefox Launch of `creepy.html`
-- **Date/Time:** April 15, 2025, 1:28 AM  
-- **Command:**
-  ```bash
-  "firefox.exe" C:\Users\Ash\Documents\LabPayload\creepy.html
-  ```
-- **Launched by:** `open-creepy.ps1` (likely triggered via `launcher.bat`)
-
----
 
 ## KQL Queries Used
 
