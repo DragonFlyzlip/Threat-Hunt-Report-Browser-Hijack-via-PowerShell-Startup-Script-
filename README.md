@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/de3734f2-f060-48db-a70e-736055d50c25)
+
+
 # Threat Hunt Report: Browser Hijack via PowerShell Startup Script
 
 - [Scenario Creation](https://github.com/DragonFlyzlip/Threat-Hunt-Report-Browser-Hijack-via-PowerShell-Startup-Script-/blob/main/Threathunting-conference-incident-Creation.md)
